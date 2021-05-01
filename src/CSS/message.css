@@ -1,0 +1,15 @@
+.message .div1{
+    height: 80vh;
+    display: block;
+}
+.message .div2{
+    height: 20vh;
+  
+}
+.message .div2 input{
+    
+
+    width: 90%;
+    float: left;
+}
+
