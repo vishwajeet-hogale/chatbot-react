@@ -25,15 +25,22 @@ class Message extends React.Component{
                     msg:''
                 });
                 console.log(this.state);
+                
             })
             .catch(err=>console.log(err));
+            let interval = setInterval(()=>{
+                    var ele = document.getElementById("chat");
+                    ele.scrollTop = ele.scrollHeight;
+                    window.clearInterval(interval);
+                },1000);
+                this.forceUpdate();
         }
     }
     render(){
     return (
       
         <div className=" message container">
-            <div className = "message div1">
+            <div id ="chat" className = "message div1">
                 {
                     this.state.chat.map((msg)=>{
                         if(msg.from === 'cbot'){
