@@ -13,3 +13,29 @@
     float: left;
 }
 
+.bot{
+    /* float: left; */
+    margin-right: 500px;
+    padding: 5rem;
+    display: block;
+    background-color: azure;
+    color: black;
+    width: 30%;
+    height: 70px;
+    border-radius: 75px;
+    margin-bottom: auto;
+    align-items: center;
+    padding-top:auto ;
+}
+.user{
+    /* float: right; */
+    margin-left: 700px;
+    padding: 5rem;
+    display: block;
+    background-color: azure;
+    color: black;
+    margin-bottom: 10px;
+    border-radius: 75px;
+    width: 30%;
+    height: 70px;
+}

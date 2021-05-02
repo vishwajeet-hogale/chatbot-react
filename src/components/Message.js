@@ -11,16 +11,43 @@ class Message extends React.Component{
         this.setState({msg:e.target.value});
     }
     handleSend = () =>{
+        console.log("in it")
         if(this.state.msg != ''){
-            axios.post('http://127.0.0.1:5000/user',{'msg':this.state.msg}).then(res=>console.log(res)).catch(err=>console.log(err));
+            console.log("in it")
+            axios.post('http://127.0.0.1:5000/user',{'msg':this.state.msg})
+            .then(res=>{
+                console.log(res);
+                let ch = this.state.chat;
+                ch.push({from:"user","msg":this.state.msg})
+                ch.push({from:"cbot","msg":res.data})
+                this.setState({
+                    chat:ch,
+                    msg:''
+                });
+                console.log(this.state);
+            })
+            .catch(err=>console.log(err));
         }
     }
     render(){
     return (
       
-        <div class=" message container">
+        <div className=" message container">
             <div className = "message div1">
-
+                {
+                    this.state.chat.map((msg)=>{
+                        if(msg.from === 'cbot'){
+                            return <div className="bot">
+                                {msg.msg}
+                            </div>
+                        }
+                        else{
+                            return <div className="user">
+                                {msg.msg}
+                            </div>
+                        }
+                    })
+                }
             </div>
             <div className="message div2">
                 <input type="text" name = "msg" onChange={(e)=>this.handleChange(e)} className="form-control" value={this.state.msg} />
